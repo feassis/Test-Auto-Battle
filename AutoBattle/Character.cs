@@ -14,12 +14,14 @@ namespace AutoBattle
         public float DamageMultiplier { get; set; }
         public GridBox currentBox;
         public int PlayerIndex;
+        public CharacterClass CharacterClass;
+        
         public Character Target { get; set; } 
+        
         public Character(CharacterClass characterClass)
         {
-
+            CharacterClass = characterClass;
         }
-
 
         public bool TakeDamage(float amount)
         {
@@ -73,10 +75,10 @@ namespace AutoBattle
                     battlefield.grids[currentBox.Index] = currentBox;
                     currentBox = (battlefield.grids.Find(x => x.Index == currentBox.Index + 1));
                     currentBox.ocupied = true;
-                    return;
                     battlefield.grids[currentBox.Index] = currentBox;
                     Console.WriteLine($"Player {PlayerIndex} walked right\n");
                     battlefield.drawBattlefield(5, 5);
+                    return;
                 }
 
                 if (this.currentBox.yIndex > Target.currentBox.yIndex)

@@ -12,7 +12,6 @@ namespace AutoBattle
         static void Main(string[] args)
         {
             Grid grid = new Grid(5, 5);
-            CharacterClass playerCharacterClass;
             GridBox PlayerCurrentLocation;
             GridBox EnemyCurrentLocation;
             Character PlayerCharacter;
@@ -25,7 +24,6 @@ namespace AutoBattle
 
             void Setup()
             {
-
                 GetPlayerChoice();
             }
 
@@ -83,7 +81,6 @@ namespace AutoBattle
                 PlayerCharacter.BaseDamage = 20;
                 PlayerCharacter.PlayerIndex = 1;
                 StartGame();
-
             }
 
             void StartGame()
@@ -149,17 +146,16 @@ namespace AutoBattle
             void AlocatePlayers()
             {
                 AlocatePlayerCharacter();
-
             }
 
             void AlocatePlayerCharacter()
             {
-                int random = 0;
+                int random = GetRandomNumberPositionOnGrid();
                 GridBox RandomLocation = (grid.grids.ElementAt(random));
                 Console.Write($"{random}\n");
                 if (!RandomLocation.ocupied)
                 {
-                    GridBox PlayerCurrentLocation = RandomLocation;
+                    PlayerCurrentLocation = RandomLocation;
                     RandomLocation.ocupied = true;
                     grid.grids[random] = RandomLocation;
                     PlayerCharacter.currentBox = grid.grids[random];
@@ -172,7 +168,7 @@ namespace AutoBattle
 
             void AlocateEnemyCharacter()
             {
-                int random = 24;
+                int random = GetRandomNumberPositionOnGrid();
                 GridBox RandomLocation = (grid.grids.ElementAt(random));
                 Console.Write($"{random}\n");
                 if (!RandomLocation.ocupied)
@@ -187,10 +183,12 @@ namespace AutoBattle
                 {
                     AlocateEnemyCharacter();
                 }
-
-                
             }
 
+            int GetRandomNumberPositionOnGrid()
+            {
+                return GetRandomInt(0, grid.xLenght * grid.yLength);
+            }
         }
     }
 }
