@@ -25,6 +25,7 @@ namespace AutoBattle
             void Setup()
             {
                 GetPlayerChoice();
+                CreateEnemyCharacter();
             }
 
             void GetPlayerChoice()
@@ -57,12 +58,11 @@ namespace AutoBattle
 
             void CreatePlayerCharacter(int classIndex)
             {
-               
                 CharacterClass characterClass = (CharacterClass)classIndex;
                 Console.WriteLine($"Player Class Choice: {characterClass}");
                 PlayerCharacter = new Character(characterClass, 0);
                 
-                CreateEnemyCharacter();
+                
             }
 
             void CreateEnemyCharacter()

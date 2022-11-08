@@ -3,6 +3,7 @@
 ## Step 3 - Refactoring Character
 
 1- there is a bug where: when creating enemy, player's data is modified but enemy's are not. To fix this I am moving this value alocations to Character constructor, since thay all use the same base value;
+2- moving call to create enemy to be independant to player creation;
 
 ## Step 2 - Removing Compilation Warnings From Standard Project
 
