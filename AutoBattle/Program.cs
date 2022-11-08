@@ -155,7 +155,7 @@ namespace AutoBattle
                 Console.Write($"{random}\n");
                 if (!RandomLocation.ocupied)
                 {
-                    GridBox PlayerCurrentLocation = RandomLocation;
+                    PlayerCurrentLocation = RandomLocation;
                     RandomLocation.ocupied = true;
                     grid.grids[random] = RandomLocation;
                     PlayerCharacter.currentBox = grid.grids[random];
