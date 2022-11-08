@@ -84,7 +84,7 @@ namespace AutoBattle
 
                 if (currentTurn == 0)
                 {
-                    //AllPlayers.Sort();  
+                    AllPlayers.Sort((Character char1, Character char2) => char1.CharacterIndex.CompareTo(char2.CharacterIndex));  
                 }
 
                 foreach(Character character in AllPlayers)

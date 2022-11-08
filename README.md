@@ -6,6 +6,7 @@
 2- moving call to create enemy to be independant to player creation;
 3- changing create player character method to no longer use switch case and repeat code
 4- start game should not be part of setup, since the game itself is not part o its setup
+5- Implementinf AllPlayer.Sort()
 
 ## Step 2 - Removing Compilation Warnings From Standard Project
 
