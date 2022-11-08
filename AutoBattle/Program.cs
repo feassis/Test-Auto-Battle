@@ -150,7 +150,7 @@ namespace AutoBattle
 
             void AlocatePlayerCharacter()
             {
-                int random = 0;
+                int random = GetRandomNumberPositionOnGrid();
                 GridBox RandomLocation = (grid.grids.ElementAt(random));
                 Console.Write($"{random}\n");
                 if (!RandomLocation.ocupied)
@@ -168,7 +168,7 @@ namespace AutoBattle
 
             void AlocateEnemyCharacter()
             {
-                int random = 24;
+                int random = GetRandomNumberPositionOnGrid();
                 GridBox RandomLocation = (grid.grids.ElementAt(random));
                 Console.Write($"{random}\n");
                 if (!RandomLocation.ocupied)
@@ -185,6 +185,10 @@ namespace AutoBattle
                 }
             }
 
+            int GetRandomNumberPositionOnGrid()
+            {
+                return GetRandomInt(0, grid.xLenght * grid.yLength);
+            }
         }
     }
 }

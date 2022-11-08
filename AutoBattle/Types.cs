@@ -44,6 +44,5 @@ namespace AutoBattle
             Cleric = 3,
             Archer = 4
         }
-
     }
 }
