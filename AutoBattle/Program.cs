@@ -60,13 +60,9 @@ namespace AutoBattle
                
                 CharacterClass characterClass = (CharacterClass)classIndex;
                 Console.WriteLine($"Player Class Choice: {characterClass}");
-                PlayerCharacter = new Character(characterClass);
-                PlayerCharacter.Health = 100;
-                PlayerCharacter.BaseDamage = 20;
-                PlayerCharacter.PlayerIndex = 0;
+                PlayerCharacter = new Character(characterClass, 0);
                 
                 CreateEnemyCharacter();
-
             }
 
             void CreateEnemyCharacter()
@@ -76,10 +72,7 @@ namespace AutoBattle
                 int randomInteger = rand.Next(1, 4);
                 CharacterClass enemyClass = (CharacterClass)randomInteger;
                 Console.WriteLine($"Enemy Class Choice: {enemyClass}");
-                EnemyCharacter = new Character(enemyClass);
-                EnemyCharacter.Health = 100;
-                PlayerCharacter.BaseDamage = 20;
-                PlayerCharacter.PlayerIndex = 1;
+                EnemyCharacter = new Character(enemyClass, 1);
                 StartGame();
             }
 

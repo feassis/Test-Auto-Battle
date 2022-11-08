@@ -13,14 +13,17 @@ namespace AutoBattle
         public float BaseDamage;
         public float DamageMultiplier { get; set; }
         public GridBox currentBox;
-        public int PlayerIndex;
+        public int CharacterIndex;
         public CharacterClass CharacterClass;
         
         public Character Target { get; set; } 
         
-        public Character(CharacterClass characterClass)
+        public Character(CharacterClass characterClass, int index)
         {
             CharacterClass = characterClass;
+            Health = 100;
+            BaseDamage = 20;
+            CharacterIndex = index;
         }
 
         public bool TakeDamage(float amount)
@@ -64,7 +67,7 @@ namespace AutoBattle
                         currentBox = (battlefield.grids.Find(x => x.Index == currentBox.Index - 1));
                         currentBox.ocupied = true;
                         battlefield.grids[currentBox.Index] = currentBox;
-                        Console.WriteLine($"Player {PlayerIndex} walked left\n");
+                        Console.WriteLine($"Player {CharacterIndex} walked left\n");
                         battlefield.drawBattlefield(5, 5);
 
                         return;
@@ -76,7 +79,7 @@ namespace AutoBattle
                     currentBox = (battlefield.grids.Find(x => x.Index == currentBox.Index + 1));
                     currentBox.ocupied = true;
                     battlefield.grids[currentBox.Index] = currentBox;
-                    Console.WriteLine($"Player {PlayerIndex} walked right\n");
+                    Console.WriteLine($"Player {CharacterIndex} walked right\n");
                     battlefield.drawBattlefield(5, 5);
                     return;
                 }
@@ -89,7 +92,7 @@ namespace AutoBattle
                     this.currentBox = (battlefield.grids.Find(x => x.Index == currentBox.Index - battlefield.xLenght));
                     this.currentBox.ocupied = true;
                     battlefield.grids[currentBox.Index] = currentBox;
-                    Console.WriteLine($"Player {PlayerIndex} walked up\n");
+                    Console.WriteLine($"Player {CharacterIndex} walked up\n");
                     return;
                 }
                 else if(this.currentBox.yIndex < Target.currentBox.yIndex)
@@ -99,7 +102,7 @@ namespace AutoBattle
                     this.currentBox = (battlefield.grids.Find(x => x.Index == currentBox.Index + battlefield.xLenght));
                     this.currentBox.ocupied = false;
                     battlefield.grids[currentBox.Index] = currentBox;
-                    Console.WriteLine($"Player {PlayerIndex} walked down\n");
+                    Console.WriteLine($"Player {CharacterIndex} walked down\n");
                     battlefield.drawBattlefield(5, 5);
 
                     return;
@@ -126,7 +129,7 @@ namespace AutoBattle
         {
             var rand = new Random();
             target.TakeDamage(rand.Next(0, (int)BaseDamage));
-            Console.WriteLine($"Player {PlayerIndex} is attacking the player {Target.PlayerIndex} and did {BaseDamage} damage\n");
+            Console.WriteLine($"Player {CharacterIndex} is attacking the player {Target.CharacterIndex} and did {BaseDamage} damage\n");
         }
     }
 }
