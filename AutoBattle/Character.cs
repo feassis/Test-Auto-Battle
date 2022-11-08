@@ -75,10 +75,10 @@ namespace AutoBattle
                     battlefield.grids[currentBox.Index] = currentBox;
                     currentBox = (battlefield.grids.Find(x => x.Index == currentBox.Index + 1));
                     currentBox.ocupied = true;
-                    return;
                     battlefield.grids[currentBox.Index] = currentBox;
                     Console.WriteLine($"Player {PlayerIndex} walked right\n");
                     battlefield.drawBattlefield(5, 5);
+                    return;
                 }
 
                 if (this.currentBox.yIndex > Target.currentBox.yIndex)

@@ -8,6 +8,7 @@ Warnings:
 because class should be under Character class domaim.
 2- GetRandomInt was not being used - since the enemy and player "random" initial position was not random I've just changed to be random by creating a auxiliary method to return a valid random number
 3- Fixing Player Current Location was never used. At AlocatePlayerCharacter() a new variable was being created with the same name and type making it alocate player to a local variable position. 
+4- Return statement was at wrong postion, chaged its position to after battleField is draw
 
 ## Step 1 - Removing Compilation Errors From Standard Project
 
