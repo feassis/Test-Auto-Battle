@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\AutoBattle\\AutoBattle.csproj": {}
+    "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\Test-Auto-Battle\\AutoBattle\\AutoBattle.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\AutoBattle\\AutoBattle.csproj": {
+    "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\Test-Auto-Battle\\AutoBattle\\AutoBattle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\AutoBattle\\AutoBattle.csproj",
+        "projectUniqueName": "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\Test-Auto-Battle\\AutoBattle\\AutoBattle.csproj",
         "projectName": "AutoBattle",
-        "projectPath": "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\AutoBattle\\AutoBattle.csproj",
+        "projectPath": "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\Test-Auto-Battle\\AutoBattle\\AutoBattle.csproj",
         "packagesPath": "C:\\Users\\Assis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\AutoBattle\\obj\\",
+        "outputPath": "C:\\Users\\Assis\\OneDrive\\Área de Trabalho\\AutoBattle\\Test-Auto-Battle\\AutoBattle\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Assis\\AppData\\Roaming\\NuGet\\NuGet.Config",

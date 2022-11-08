@@ -18,10 +18,11 @@ namespace AutoBattle
             Console.WriteLine("The battle field has been created\n");
             for (int i = 0; i < Lines; i++)
             {
-                    grids.Add(newBox);
+                // grids.Add(newBox); -> new box was not defined, or created
                 for(int j = 0; j < Columns; j++)
                 {
                     GridBox newBox = new GridBox(j, i, false, (Columns * i + j));
+                    grids.Add(newBox); // adding newBox to grids, this is the solution to the problem quoted above
                     Console.Write($"{newBox.Index}\n");
                 }
             }
