@@ -4,6 +4,7 @@ using static AutoBattle.Grid;
 using System.Collections.Generic;
 using System.Linq;
 using static AutoBattle.Types;
+using System.Linq;
 
 namespace AutoBattle
 {
@@ -14,20 +15,23 @@ namespace AutoBattle
             Grid grid = new Grid(5, 5);
             GridBox PlayerCurrentLocation;
             GridBox EnemyCurrentLocation;
-            Character PlayerCharacter;
-            Character EnemyCharacter;
+            Character PlayerCharacter = null;
+            Character EnemyCharacter = null;
             List<Character> AllPlayers = new List<Character>();
             int currentTurn = 0;
             int numberOfPossibleTiles = grid.grids.Count;
+            
             Setup(); 
-
 
             void Setup()
             {
-                GetPlayerChoice();
+                while (!GetPlayerChoice());
+                CreateEnemyCharacter();
             }
 
-            void GetPlayerChoice()
+            StartGame();
+
+            bool GetPlayerChoice()
             {
                 //asks for the player to choose between for possible classes via console.
                 Console.WriteLine("Choose Between One of this Classes:\n");
@@ -35,38 +39,23 @@ namespace AutoBattle
                 //store the player choice in a variable
                 string choice = Console.ReadLine();
 
-                switch (choice)
-                {
-                    case "1":
-                        CreatePlayerCharacter(Int32.Parse(choice));
-                        break;
-                    case "2":
-                        CreatePlayerCharacter(Int32.Parse(choice));
-                        break;
-                    case "3":
-                        CreatePlayerCharacter(Int32.Parse(choice));
-                        break;
-                    case "4":
-                        CreatePlayerCharacter(Int32.Parse(choice));
-                        break;
-                    default:
-                        GetPlayerChoice();
-                        break;
-                }
+                return CreatePlayerCharacter(Int32.Parse(choice));
             }
 
-            void CreatePlayerCharacter(int classIndex)
+            bool CreatePlayerCharacter(int classIndex)
             {
-               
+                var enumOptions = Enum.GetValues(typeof(CharacterClass)).Cast<CharacterClass>().ToList();
+                if (!enumOptions.Contains((CharacterClass)classIndex))
+                {
+                    Console.WriteLine("Choose a valid option\n");
+                    return (false);
+                }
+
                 CharacterClass characterClass = (CharacterClass)classIndex;
                 Console.WriteLine($"Player Class Choice: {characterClass}");
-                PlayerCharacter = new Character(characterClass);
-                PlayerCharacter.Health = 100;
-                PlayerCharacter.BaseDamage = 20;
-                PlayerCharacter.PlayerIndex = 0;
-                
-                CreateEnemyCharacter();
+                PlayerCharacter = new Character(characterClass, 0);
 
+                return true;
             }
 
             void CreateEnemyCharacter()
@@ -76,11 +65,7 @@ namespace AutoBattle
                 int randomInteger = rand.Next(1, 4);
                 CharacterClass enemyClass = (CharacterClass)randomInteger;
                 Console.WriteLine($"Enemy Class Choice: {enemyClass}");
-                EnemyCharacter = new Character(enemyClass);
-                EnemyCharacter.Health = 100;
-                PlayerCharacter.BaseDamage = 20;
-                PlayerCharacter.PlayerIndex = 1;
-                StartGame();
+                EnemyCharacter = new Character(enemyClass, 1);
             }
 
             void StartGame()
@@ -99,7 +84,7 @@ namespace AutoBattle
 
                 if (currentTurn == 0)
                 {
-                    //AllPlayers.Sort();  
+                    AllPlayers.Sort((Character char1, Character char2) => char1.CharacterIndex.CompareTo(char2.CharacterIndex));  
                 }
 
                 foreach(Character character in AllPlayers)
