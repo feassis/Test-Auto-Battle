@@ -29,6 +29,8 @@ namespace AutoBattle
                 CreateEnemyCharacter();
             }
 
+            StartGame();
+
             bool GetPlayerChoice()
             {
                 //asks for the player to choose between for possible classes via console.
@@ -64,7 +66,6 @@ namespace AutoBattle
                 CharacterClass enemyClass = (CharacterClass)randomInteger;
                 Console.WriteLine($"Enemy Class Choice: {enemyClass}");
                 EnemyCharacter = new Character(enemyClass, 1);
-                StartGame();
             }
 
             void StartGame()

@@ -5,6 +5,7 @@
 1- there is a bug where: when creating enemy, player's data is modified but enemy's are not. To fix this I am moving this value alocations to Character constructor, since thay all use the same base value;
 2- moving call to create enemy to be independant to player creation;
 3- changing create player character method to no longer use switch case and repeat code
+4- start game should not be part of setup, since the game itself is not part o its setup
 
 ## Step 2 - Removing Compilation Warnings From Standard Project
 
