@@ -14,12 +14,14 @@ namespace AutoBattle
         public float DamageMultiplier { get; set; }
         public GridBox currentBox;
         public int PlayerIndex;
+        public CharacterClass CharacterClass;
+        
         public Character Target { get; set; } 
+        
         public Character(CharacterClass characterClass)
         {
-
+            CharacterClass = characterClass;
         }
-
 
         public bool TakeDamage(float amount)
         {

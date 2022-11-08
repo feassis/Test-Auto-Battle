@@ -18,3 +18,10 @@ C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle
 C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\obj\Debug\netcoreapp3.1\AutoBattle.csproj.CoreCompileInputs.cache
 C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\obj\Debug\netcoreapp3.1\AutoBattle.dll
 C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\obj\Debug\netcoreapp3.1\AutoBattle.pdb
+C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\bin\Debug\netcoreapp3.1\AutoBattle.exe
+C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\bin\Debug\netcoreapp3.1\AutoBattle.deps.json
+C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\bin\Debug\netcoreapp3.1\AutoBattle.runtimeconfig.json
+C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\bin\Debug\netcoreapp3.1\AutoBattle.runtimeconfig.dev.json
+C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\bin\Debug\netcoreapp3.1\AutoBattle.dll
+C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\bin\Debug\netcoreapp3.1\AutoBattle.pdb
+C:\Users\Assis\OneDrive\Área de Trabalho\AutoBattle\Test-Auto-Battle\AutoBattle\obj\Debug\netcoreapp3.1\AutoBattle.genruntimeconfig.cache

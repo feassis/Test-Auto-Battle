@@ -12,7 +12,6 @@ namespace AutoBattle
         static void Main(string[] args)
         {
             Grid grid = new Grid(5, 5);
-            CharacterClass playerCharacterClass;
             GridBox PlayerCurrentLocation;
             GridBox EnemyCurrentLocation;
             Character PlayerCharacter;
@@ -25,7 +24,6 @@ namespace AutoBattle
 
             void Setup()
             {
-
                 GetPlayerChoice();
             }
 
@@ -83,7 +81,6 @@ namespace AutoBattle
                 PlayerCharacter.BaseDamage = 20;
                 PlayerCharacter.PlayerIndex = 1;
                 StartGame();
-
             }
 
             void StartGame()
@@ -149,7 +146,6 @@ namespace AutoBattle
             void AlocatePlayers()
             {
                 AlocatePlayerCharacter();
-
             }
 
             void AlocatePlayerCharacter()
@@ -187,8 +183,6 @@ namespace AutoBattle
                 {
                     AlocateEnemyCharacter();
                 }
-
-                
             }
 
         }
