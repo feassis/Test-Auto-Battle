@@ -81,6 +81,17 @@ namespace AutoBattle
 
             void StartTurn(){
 
+                Console.Write(Environment.NewLine + Environment.NewLine);
+                Console.WriteLine("---------Game - State---------");
+                Console.WriteLine($"Player Name: {PlayerCharacter.Name}");
+                Console.WriteLine($"Player Index: {PlayerCharacter.CharacterIndex}");
+                Console.WriteLine($"Player HP: {PlayerCharacter.Health}");
+                Console.WriteLine($"Enemy Name: {EnemyCharacter.Name}");
+                Console.WriteLine($"Enemy Index: {EnemyCharacter.CharacterIndex}");
+                Console.WriteLine($"Enemy HP: {EnemyCharacter.Health}");
+                Console.WriteLine("------------------------------");
+                Console.Write(Environment.NewLine + Environment.NewLine);
+
                 if (currentTurn == 0)
                 {
                     int random = GetRandomInt(0, int.MaxValue);
@@ -102,17 +113,6 @@ namespace AutoBattle
 
             void HandleTurn()
             {
-                Console.Write(Environment.NewLine + Environment.NewLine);
-                Console.WriteLine("---------Game - State---------");
-                Console.WriteLine($"Player Name: {PlayerCharacter.Name}");
-                Console.WriteLine($"Player Index: {PlayerCharacter.CharacterIndex}");
-                Console.WriteLine($"Player HP: {PlayerCharacter.Health}");
-                Console.WriteLine($"Enemy Name: {EnemyCharacter.Name}");
-                Console.WriteLine($"Enemy Index: {EnemyCharacter.CharacterIndex}");
-                Console.WriteLine($"Enemy HP: {EnemyCharacter.Health}");
-                Console.WriteLine("------------------------------");
-                Console.Write(Environment.NewLine + Environment.NewLine);
-
                 if (PlayerCharacter.Health == 0)
                 {
                     return;

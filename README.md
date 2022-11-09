@@ -5,6 +5,7 @@
 1- refactoring attack method to console display correct damage value.
 2- adding log to HandleTurn() method to display current game state.
 3- fixing bug on TakeDamage() to no longer remove character's base damage from Health, clamping Heath min value to 0
+4- moving current game state disple to start of turn
 
 ## Step 5 - Changing Movement To Move To All 8 directions (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/5)
 
