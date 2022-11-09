@@ -148,6 +148,7 @@ namespace AutoBattle
                 {
                     PlayerCurrentLocation = RandomLocation;
                     RandomLocation.ocupied = true;
+                    RandomLocation.CharacterIndex = PlayerCharacter.CharacterIndex;
                     grid.grids[random] = RandomLocation;
                     PlayerCharacter.currentBox = grid.grids[random];
                 } else
@@ -165,6 +166,7 @@ namespace AutoBattle
                 {
                     EnemyCurrentLocation = RandomLocation;
                     RandomLocation.ocupied = true;
+                    RandomLocation.CharacterIndex = EnemyCharacter.CharacterIndex;
                     grid.grids[random] = RandomLocation;
                     EnemyCharacter.currentBox = grid.grids[random];
                     grid.DrawBattlefield(5 , 5);

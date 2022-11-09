@@ -38,7 +38,7 @@ namespace AutoBattle
                     if (currentgrid.ocupied)
                     {
                         //if()
-                        Console.Write("[X]\t");
+                        Console.Write($"[{currentgrid.CharacterIndex}]\t");
                     }
                     else
                     {
