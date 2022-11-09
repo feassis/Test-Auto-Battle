@@ -169,7 +169,7 @@ namespace AutoBattle
                     RandomLocation.CharacterIndex = EnemyCharacter.CharacterIndex;
                     grid.grids[random] = RandomLocation;
                     EnemyCharacter.currentBox = grid.grids[random];
-                    grid.DrawBattlefield(5 , 5);
+                    grid.DrawBattlefield();
                 }
                 else
                 {
