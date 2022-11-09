@@ -115,12 +115,17 @@ namespace AutoBattle
             {
                 if (PlayerCharacter.Health == 0)
                 {
+                    Console.Write(Environment.NewLine + Environment.NewLine);
+
+                    Console.WriteLine("😥You've Lost😥");
+
+                    Console.Write(Environment.NewLine + Environment.NewLine);
                     return;
                 } else if (EnemyCharacter.Health == 0)
                 {
                     Console.Write(Environment.NewLine + Environment.NewLine);
 
-                    // endgame?
+                    Console.WriteLine("🎉Congratulations You've Won🎉");
 
                     Console.Write(Environment.NewLine + Environment.NewLine);
 
