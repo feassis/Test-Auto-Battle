@@ -1,6 +1,13 @@
 # Test-Auto-Battle
 
-## Step 4 - Drawing Character On Grid
+## Step 5 - Changing Movement To Move To All 8 directions
+
+1- The first step of my implementation is to be able to get the neighbour closest to target. 
+To achieve this two methods were implemented: GetNeighbourClosetToTarget(Grid battlefield) and GetNeighbourDistance(Grid battlefield, GridBox positiontoBeEvaluated)
+2- removing movement section from else, since it is not needed because the if above has a return;
+3- implementing method to move character to closest position and replacing section of movement on StartTurn()
+
+## Step 4 - Drawing Character On Grid (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/4)
 
 1- making player and enemy alocation be independent
 2- at DrawBattlefield method instead of getting correct position it was creating a new one, fixed that to get correct grid box

@@ -4,7 +4,6 @@ using static AutoBattle.Grid;
 using System.Collections.Generic;
 using System.Linq;
 using static AutoBattle.Types;
-using System.Linq;
 
 namespace AutoBattle
 {
@@ -150,7 +149,7 @@ namespace AutoBattle
                     RandomLocation.ocupied = true;
                     RandomLocation.CharacterIndex = PlayerCharacter.CharacterIndex;
                     grid.grids[random] = RandomLocation;
-                    PlayerCharacter.currentBox = grid.grids[random];
+                    PlayerCharacter.CurrentBox = grid.grids[random];
                 } else
                 {
                     AlocatePlayerCharacter();
@@ -168,7 +167,7 @@ namespace AutoBattle
                     RandomLocation.ocupied = true;
                     RandomLocation.CharacterIndex = EnemyCharacter.CharacterIndex;
                     grid.grids[random] = RandomLocation;
-                    EnemyCharacter.currentBox = grid.grids[random];
+                    EnemyCharacter.CurrentBox = grid.grids[random];
                     grid.DrawBattlefield();
                 }
                 else
