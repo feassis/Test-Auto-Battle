@@ -243,6 +243,7 @@ namespace AutoBattle
             var rand = new Random();
 
             int randomDmg = rand.Next(0, (int)BaseDamage);
+            randomDmg = (int)Math.Round(randomDmg * DamageMultiplier);
             target.TakeDamage(randomDmg);
             Console.WriteLine($"Player {CharacterIndex} is attacking the player {Target.CharacterIndex} and did {randomDmg} damage\n");
         }

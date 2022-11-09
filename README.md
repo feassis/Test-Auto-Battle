@@ -3,6 +3,7 @@
 ## Step 7 - Adding Class Specific Features (PR Link: )
 
 1- making Character class abstract and implementing a class for each Character Class
+2- adding damage multiplier to damage flow
 
 ## Step 6 - Refactoring Combat Flow (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/6)
 
