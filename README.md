@@ -1,6 +1,6 @@
 # Test-Auto-Battle
 
-## Step 7 - Adding Class Specific Features (PR Link: )
+## Step 7 - Adding Class Specific Features (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/7)
 
 1- making Character class abstract and implementing a class for each Character Class
 2- adding damage multiplier to damage flow
