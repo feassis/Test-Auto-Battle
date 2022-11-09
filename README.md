@@ -9,6 +9,7 @@
 5- during refactor of DrawBattlefield I've found a bug: if a Character is on grid's border the CheckCloseTargets(Grid battlefield) method was throwing an exeption when tring to access a position outside the grid. 
 Since I've born in august my task would be to: The character can attack/walk in 8 directions. to do that one method that I would implement is to get a valid neibouthood, and this method would help to solve this bug. 
 An other bug that I've found is that on CheckCloseTarget() method Up and Down bool were getting each other's value
+6- during creation of GetNeighbourhood Method I've noticed that of the movement options was drawing battlefiled before changes
 
 ## Step 3 - Refactoring Character (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/3)
 

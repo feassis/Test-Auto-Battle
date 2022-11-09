@@ -85,13 +85,13 @@ namespace AutoBattle
 
                 if (this.currentBox.yIndex > Target.currentBox.yIndex)
                 {
-                    battlefield.DrawBattlefield();
                     this.currentBox.ocupied = false;
                     battlefield.grids[currentBox.Index] = currentBox;
                     this.currentBox = (battlefield.grids.Find(x => x.Index == currentBox.Index - battlefield.xLenght));
                     this.currentBox.ocupied = true;
                     battlefield.grids[currentBox.Index] = currentBox;
                     Console.WriteLine($"Player {CharacterIndex} walked up\n");
+                    battlefield.DrawBattlefield();
                     return;
                 }
                 else if(this.currentBox.yIndex < Target.currentBox.yIndex)
@@ -103,7 +103,6 @@ namespace AutoBattle
                     battlefield.grids[currentBox.Index] = currentBox;
                     Console.WriteLine($"Player {CharacterIndex} walked down\n");
                     battlefield.DrawBattlefield();
-
                     return;
                 }
             }
