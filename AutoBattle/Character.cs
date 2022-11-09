@@ -16,19 +16,23 @@ namespace AutoBattle
         public int CharacterIndex;
         public CharacterClass CharacterClass;
         
-        public Character Target { get; set; } 
+        public Character Target { get; set; }
+
+        private bool isDead;
         
-        public Character(CharacterClass characterClass, int index)
+        public Character(CharacterClass characterClass, int index, string name)
         {
             CharacterClass = characterClass;
             Health = 100;
             BaseDamage = 20;
             CharacterIndex = index;
+            Name = name;
         }
 
         public bool TakeDamage(float amount)
         {
-            if((Health -= BaseDamage) <= 0)
+            Health = Math.Clamp(Health - amount, 0, int.MaxValue);
+            if(Health <= 0)
             {
                 Die();
                 return true;
@@ -38,7 +42,8 @@ namespace AutoBattle
 
         public void Die()
         {
-            //TODO >> maybe kill him?
+            isDead = true;
+            Console.WriteLine($"Character {Name} has died");
         }
 
         public void WalkTO(bool CanWalk)
@@ -230,9 +235,16 @@ namespace AutoBattle
 
         public void Attack (Character target)
         {
+            if (isDead)
+            {
+                return;
+            }
+            
             var rand = new Random();
-            target.TakeDamage(rand.Next(0, (int)BaseDamage));
-            Console.WriteLine($"Player {CharacterIndex} is attacking the player {Target.CharacterIndex} and did {BaseDamage} damage\n");
+
+            int randomDmg = rand.Next(0, (int)BaseDamage);
+            target.TakeDamage(randomDmg);
+            Console.WriteLine($"Player {CharacterIndex} is attacking the player {Target.CharacterIndex} and did {randomDmg} damage\n");
         }
     }
 }

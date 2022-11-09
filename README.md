@@ -1,6 +1,17 @@
 # Test-Auto-Battle
 
-## Step 5 - Changing Movement To Move To All 8 directions
+## Step 6 - Refactoring Combat Flow (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/6)
+
+1- refactoring attack method to console display correct damage value.
+2- adding log to HandleTurn() method to display current game state.
+3- fixing bug on TakeDamage() to no longer remove character's base damage from Health, clamping Heath min value to 0
+4- moving current game state disple to start of turn
+5- loging end game.
+6- creating display game state method and calling at start and end of turn
+7- adding log to say character died, and adding character name to constructor
+8- fixing bug where a dead character could attack
+
+## Step 5 - Changing Movement To Move To All 8 directions (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/5)
 
 1- The first step of my implementation is to be able to get the neighbour closest to target. 
 To achieve this two methods were implemented: GetNeighbourClosetToTarget(Grid battlefield) and GetNeighbourDistance(Grid battlefield, GridBox positiontoBeEvaluated)

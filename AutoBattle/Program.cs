@@ -15,7 +15,7 @@ namespace AutoBattle
             GridBox PlayerCurrentLocation;
             GridBox EnemyCurrentLocation;
             Character PlayerCharacter = null;
-            Character EnemyCharacter = null;
+            Character EnemyCharacter;
             List<Character> AllPlayers = new List<Character>();
             int currentTurn = 0;
             int numberOfPossibleTiles = grid.grids.Count;
@@ -52,7 +52,7 @@ namespace AutoBattle
 
                 CharacterClass characterClass = (CharacterClass)classIndex;
                 Console.WriteLine($"Player Class Choice: {characterClass}");
-                PlayerCharacter = new Character(characterClass, 0);
+                PlayerCharacter = new Character(characterClass, 0, "Player");
 
                 return true;
             }
@@ -64,7 +64,7 @@ namespace AutoBattle
                 int randomInteger = rand.Next(1, 4);
                 CharacterClass enemyClass = (CharacterClass)randomInteger;
                 Console.WriteLine($"Enemy Class Choice: {enemyClass}");
-                EnemyCharacter = new Character(enemyClass, 1);
+                EnemyCharacter = new Character(enemyClass, 1, "AI");
             }
 
             void StartGame()
@@ -79,7 +79,9 @@ namespace AutoBattle
 
             }
 
-            void StartTurn(){
+            void StartTurn()
+            {
+                DisplayGameState();
 
                 if (currentTurn == 0)
                 {
@@ -96,20 +98,27 @@ namespace AutoBattle
                     character.StartTurn(grid);
                 }
 
+                DisplayGameState();
+
                 currentTurn++;
                 HandleTurn();
             }
 
             void HandleTurn()
             {
-                if(PlayerCharacter.Health == 0)
+                if (PlayerCharacter.Health == 0)
                 {
+                    Console.Write(Environment.NewLine + Environment.NewLine);
+
+                    Console.WriteLine("😥You've Lost😥");
+
+                    Console.Write(Environment.NewLine + Environment.NewLine);
                     return;
                 } else if (EnemyCharacter.Health == 0)
                 {
                     Console.Write(Environment.NewLine + Environment.NewLine);
 
-                    // endgame?
+                    Console.WriteLine("🎉Congratulations You've Won🎉");
 
                     Console.Write(Environment.NewLine + Environment.NewLine);
 
@@ -179,6 +188,20 @@ namespace AutoBattle
             int GetRandomNumberPositionOnGrid()
             {
                 return GetRandomInt(0, grid.xLenght * grid.yLength);
+            }
+
+            void DisplayGameState()
+            {
+                Console.Write(Environment.NewLine + Environment.NewLine);
+                Console.WriteLine("---------Game - State---------");
+                Console.WriteLine($"Player Name: {PlayerCharacter.Name}");
+                Console.WriteLine($"Player Index: {PlayerCharacter.CharacterIndex}");
+                Console.WriteLine($"Player HP: {PlayerCharacter.Health}");
+                Console.WriteLine($"Enemy Name: {EnemyCharacter.Name}");
+                Console.WriteLine($"Enemy Index: {EnemyCharacter.CharacterIndex}");
+                Console.WriteLine($"Enemy HP: {EnemyCharacter.Health}");
+                Console.WriteLine("------------------------------");
+                Console.Write(Environment.NewLine + Environment.NewLine);
             }
         }
     }
