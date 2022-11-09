@@ -52,7 +52,7 @@ namespace AutoBattle
 
                 CharacterClass characterClass = (CharacterClass)classIndex;
                 Console.WriteLine($"Player Class Choice: {characterClass}");
-                PlayerCharacter = new Character(characterClass, 0, "Player");
+                PlayerCharacter = CreateCharacter(characterClass, 0, "Player");
 
                 return true;
             }
@@ -64,7 +64,19 @@ namespace AutoBattle
                 int randomInteger = rand.Next(1, 4);
                 CharacterClass enemyClass = (CharacterClass)randomInteger;
                 Console.WriteLine($"Enemy Class Choice: {enemyClass}");
-                EnemyCharacter = new Character(enemyClass, 1, "AI");
+                EnemyCharacter = CreateCharacter(enemyClass, 1, "AI");
+            }
+
+            Character CreateCharacter(CharacterClass characterClass, int index, string name)
+            {
+                return characterClass switch
+                {
+                    CharacterClass.Archer => new Archer(characterClass, index, name),
+                    CharacterClass.Cleric => new Cleric(characterClass, index, name),
+                    CharacterClass.Paladin => new Paladin(characterClass, index, name),
+                    CharacterClass.Warrior => new Warrior(characterClass, index, name),
+                    _ => throw new ArgumentOutOfRangeException($"Class not implemented")
+                };
             }
 
             void StartGame()

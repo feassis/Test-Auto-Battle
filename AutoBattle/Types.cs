@@ -6,14 +6,6 @@ namespace AutoBattle
 {
     public class Types
     {
-        public struct CharacterClassSpecific
-        {
-            CharacterClass CharacterClass;
-            float hpModifier;
-            float ClassDamage;
-            CharacterSkills[] skills;
-        }
-
         public class GridBox
         {
             public int xIndex;

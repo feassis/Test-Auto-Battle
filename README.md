@@ -1,5 +1,9 @@
 # Test-Auto-Battle
 
+## Step 7 - Adding Class Specific Features (PR Link: )
+
+1- making Character class abstract and implementing a class for each Character Class
+
 ## Step 6 - Refactoring Combat Flow (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/6)
 
 1- refactoring attack method to console display correct damage value.

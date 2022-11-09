@@ -6,7 +6,7 @@ using static AutoBattle.Types;
 
 namespace AutoBattle
 {
-    public class Character
+    public abstract class Character
     {
         public string Name { get; set; }
         public float Health;
