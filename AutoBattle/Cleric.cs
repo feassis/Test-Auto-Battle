@@ -9,6 +9,8 @@ namespace AutoBattle
             BaseDamage += 3;
             DamageMultiplier = 1.0f;
             Health += 20;
+
+            Skill = new DivineBlessing();
         }
     }
 }

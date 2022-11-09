@@ -16,6 +16,8 @@ namespace AutoBattle
         public int CharacterIndex;
         public CharacterClass CharacterClass;
         
+        protected CharacterSkill Skill;
+        
         public Character Target { get; set; }
 
         private bool isDead;
@@ -53,6 +55,12 @@ namespace AutoBattle
 
         public void StartTurn(Grid battlefield)
         {
+            if (isDead)
+            {
+                return;
+            }
+
+            Skill.ExecuteSkill(this, Target, battlefield);
 
             if (CheckCloseTargets(battlefield)) 
             {
@@ -218,7 +226,7 @@ namespace AutoBattle
         }
 
         // Check in x and y directions if there is any character close enough to be a target.
-        bool CheckCloseTargets(Grid battlefield)
+        public bool CheckCloseTargets(Grid battlefield)
         {
             var neighbours = GetNeighborhood(battlefield);
 

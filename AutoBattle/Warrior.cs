@@ -9,6 +9,8 @@ namespace AutoBattle
             BaseDamage += 20;
             DamageMultiplier = 1.1f;
             Health += 10;
+
+            Skill = new BersekersRage();
         }
     }
 }

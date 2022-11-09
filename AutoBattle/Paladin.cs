@@ -9,6 +9,8 @@ namespace AutoBattle
             BaseDamage += 5;
             DamageMultiplier = 1.1f;
             Health += 30;
+
+            Skill = new AuraOfHeroism();
         }
     }
 }

@@ -4,6 +4,8 @@
 
 1- making Character class abstract and implementing a class for each Character Class
 2- adding damage multiplier to damage flow
+3- creating character skills, assing for each class and calling at start of character turn. I created a abstract class called character skill that has a virtual method to execute skill. With this each of its chieldren can implement 
+whatever is needed
 
 ## Step 6 - Refactoring Combat Flow (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/6)
 
