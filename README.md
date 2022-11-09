@@ -3,6 +3,7 @@
 ## Step 4 - Drawing Character On Grid
 
 1- making player and enemy alocation be independent
+2- at DrawBattlefield method instead of getting correct position it was creating a new one, fixed that to get correct grid box
 
 ## Step 3 - Refactoring Character
 
