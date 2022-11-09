@@ -3,6 +3,7 @@
 ## Step 6 - Refactoring Combat Flow (PR Link: )
 
 1- refactoring attack method to console display correct damage value.
+2- adding log to HandleTurn() method to display current game state.
 
 ## Step 5 - Changing Movement To Move To All 8 directions (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/5)
 

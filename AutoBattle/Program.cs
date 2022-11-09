@@ -102,7 +102,18 @@ namespace AutoBattle
 
             void HandleTurn()
             {
-                if(PlayerCharacter.Health == 0)
+                Console.Write(Environment.NewLine + Environment.NewLine);
+                Console.WriteLine("---------Game - State---------");
+                Console.WriteLine($"Player Name: {PlayerCharacter.Name}");
+                Console.WriteLine($"Player Index: {PlayerCharacter.CharacterIndex}");
+                Console.WriteLine($"Player HP: {PlayerCharacter.Health}");
+                Console.WriteLine($"Enemy Name: {EnemyCharacter.Name}");
+                Console.WriteLine($"Enemy Index: {EnemyCharacter.CharacterIndex}");
+                Console.WriteLine($"Enemy HP: {EnemyCharacter.Health}");
+                Console.WriteLine("------------------------------");
+                Console.Write(Environment.NewLine + Environment.NewLine);
+
+                if (PlayerCharacter.Health == 0)
                 {
                     return;
                 } else if (EnemyCharacter.Health == 0)
