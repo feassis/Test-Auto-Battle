@@ -57,57 +57,29 @@ namespace AutoBattle
             }
 
             // if there is no target close enough, calculates in wich direction this character should move to be closer to a possible target
-            if (this.CurrentBox.xIndex > Target.CurrentBox.xIndex)
-            {
-                if ((battlefield.grids.Exists(x => x.Index == CurrentBox.Index - 1)))
-                {
-                    CurrentBox.ocupied = false;
-                    battlefield.grids[CurrentBox.Index] = CurrentBox;
-                    CurrentBox = (battlefield.grids.Find(x => x.Index == CurrentBox.Index - 1));
-                    CurrentBox.ocupied = true;
-                    battlefield.grids[CurrentBox.Index] = CurrentBox;
-                    Console.WriteLine($"Player {CharacterIndex} walked left\n");
-                    battlefield.DrawBattlefield();
-
-                    return;
-                }
-            }
-            else if (CurrentBox.xIndex < Target.CurrentBox.xIndex)
-            {
-                CurrentBox.ocupied = false;
-                battlefield.grids[CurrentBox.Index] = CurrentBox;
-                CurrentBox = (battlefield.grids.Find(x => x.Index == CurrentBox.Index + 1));
-                CurrentBox.ocupied = true;
-                battlefield.grids[CurrentBox.Index] = CurrentBox;
-                Console.WriteLine($"Player {CharacterIndex} walked right\n");
-                battlefield.DrawBattlefield();
-                return;
-            }
-
-            if (this.CurrentBox.yIndex > Target.CurrentBox.yIndex)
-            {
-                this.CurrentBox.ocupied = false;
-                battlefield.grids[CurrentBox.Index] = CurrentBox;
-                this.CurrentBox = (battlefield.grids.Find(x => x.Index == CurrentBox.Index - battlefield.xLenght));
-                this.CurrentBox.ocupied = true;
-                battlefield.grids[CurrentBox.Index] = CurrentBox;
-                Console.WriteLine($"Player {CharacterIndex} walked up\n");
-                battlefield.DrawBattlefield();
-                return;
-            }
-            else if (this.CurrentBox.yIndex < Target.CurrentBox.yIndex)
-            {
-                this.CurrentBox.ocupied = true;
-                battlefield.grids[CurrentBox.Index] = this.CurrentBox;
-                this.CurrentBox = (battlefield.grids.Find(x => x.Index == CurrentBox.Index + battlefield.xLenght));
-                this.CurrentBox.ocupied = false;
-                battlefield.grids[CurrentBox.Index] = CurrentBox;
-                Console.WriteLine($"Player {CharacterIndex} walked down\n");
-                battlefield.DrawBattlefield();
-                return;
-            }
+            MoveCharacterCloserToTarget(battlefield);
         }
 
+        private void MoveCharacterCloserToTarget(Grid battlefield)
+        {
+            var goToPosition = GetNeighbourClosetToTarget(battlefield);
+
+            var gotTopositionPreviousOcupied = goToPosition.ocupied;
+            var gotTopositionPreviousCharacterIndex = goToPosition.CharacterIndex;
+
+            goToPosition.ocupied = CurrentBox.ocupied;
+            goToPosition.CharacterIndex = CurrentBox.CharacterIndex;
+
+            CurrentBox.ocupied = gotTopositionPreviousOcupied;
+            CurrentBox.CharacterIndex = gotTopositionPreviousCharacterIndex;
+
+            CurrentBox = goToPosition;
+
+            Console.WriteLine($"Player {CharacterIndex} walked to l: {CurrentBox.Index / battlefield.yLength} c: {CurrentBox.Index % battlefield.yLength}\n");
+            battlefield.DrawBattlefield();
+        }
+
+        //this method returns the closest position of character's target
         private GridBox GetNeighbourClosetToTarget(Grid battlefield)
         {
             var neighbours = GetNeighborhood(battlefield);
@@ -124,6 +96,7 @@ namespace AutoBattle
             return neighboursDistance[0].Position;
         }
 
+        //this method get the distance of a position to the character's target
         private NeighbourDistance GetNeighbourDistance(Grid battlefield, GridBox positiontoBeEvaluated)
         {
             int targetLinePosition = Target.CurrentBox.Index / battlefield.yLength;
