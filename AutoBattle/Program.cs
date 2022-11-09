@@ -84,7 +84,12 @@ namespace AutoBattle
 
                 if (currentTurn == 0)
                 {
-                    AllPlayers.Sort((Character char1, Character char2) => char1.CharacterIndex.CompareTo(char2.CharacterIndex));  
+                    int random = GetRandomInt(0, int.MaxValue);
+
+                    if(random % 2 == 0)
+                    {
+                        AllPlayers.Reverse();
+                    }
                 }
 
                 foreach(Character character in AllPlayers)
@@ -131,6 +136,7 @@ namespace AutoBattle
             void AlocatePlayers()
             {
                 AlocatePlayerCharacter();
+                AlocateEnemyCharacter();
             }
 
             void AlocatePlayerCharacter()
@@ -142,9 +148,9 @@ namespace AutoBattle
                 {
                     PlayerCurrentLocation = RandomLocation;
                     RandomLocation.ocupied = true;
+                    RandomLocation.CharacterIndex = PlayerCharacter.CharacterIndex;
                     grid.grids[random] = RandomLocation;
                     PlayerCharacter.currentBox = grid.grids[random];
-                    AlocateEnemyCharacter();
                 } else
                 {
                     AlocatePlayerCharacter();
@@ -160,9 +166,10 @@ namespace AutoBattle
                 {
                     EnemyCurrentLocation = RandomLocation;
                     RandomLocation.ocupied = true;
+                    RandomLocation.CharacterIndex = EnemyCharacter.CharacterIndex;
                     grid.grids[random] = RandomLocation;
                     EnemyCharacter.currentBox = grid.grids[random];
-                    grid.drawBattlefield(5 , 5);
+                    grid.DrawBattlefield();
                 }
                 else
                 {

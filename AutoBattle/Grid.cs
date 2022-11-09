@@ -28,17 +28,17 @@ namespace AutoBattle
         }
 
         // prints the matrix that indicates the tiles of the battlefield
-        public void drawBattlefield(int Lines, int Columns)
+        public void DrawBattlefield()
         {
-            for (int i = 0; i < Lines; i++)
+            for (int i = 0; i < xLenght; i++)
             {
-                for (int j = 0; j < Columns; j++)
+                for (int j = 0; j < yLength; j++)
                 {
-                    GridBox currentgrid = new GridBox();
+                    GridBox currentgrid = grids[i * xLenght + j];
                     if (currentgrid.ocupied)
                     {
                         //if()
-                        Console.Write("[X]\t");
+                        Console.Write($"[{currentgrid.CharacterIndex}]\t");
                     }
                     else
                     {

@@ -51,8 +51,7 @@ namespace AutoBattle
 
             if (CheckCloseTargets(battlefield)) 
             {
-                Attack(Target);
-                
+                Attack(Target);  
 
                 return;
             }
@@ -68,7 +67,7 @@ namespace AutoBattle
                         currentBox.ocupied = true;
                         battlefield.grids[currentBox.Index] = currentBox;
                         Console.WriteLine($"Player {CharacterIndex} walked left\n");
-                        battlefield.drawBattlefield(5, 5);
+                        battlefield.DrawBattlefield();
 
                         return;
                     }
@@ -80,19 +79,19 @@ namespace AutoBattle
                     currentBox.ocupied = true;
                     battlefield.grids[currentBox.Index] = currentBox;
                     Console.WriteLine($"Player {CharacterIndex} walked right\n");
-                    battlefield.drawBattlefield(5, 5);
+                    battlefield.DrawBattlefield();
                     return;
                 }
 
                 if (this.currentBox.yIndex > Target.currentBox.yIndex)
                 {
-                    battlefield.drawBattlefield(5, 5);
                     this.currentBox.ocupied = false;
                     battlefield.grids[currentBox.Index] = currentBox;
                     this.currentBox = (battlefield.grids.Find(x => x.Index == currentBox.Index - battlefield.xLenght));
                     this.currentBox.ocupied = true;
                     battlefield.grids[currentBox.Index] = currentBox;
                     Console.WriteLine($"Player {CharacterIndex} walked up\n");
+                    battlefield.DrawBattlefield();
                     return;
                 }
                 else if(this.currentBox.yIndex < Target.currentBox.yIndex)
@@ -103,26 +102,113 @@ namespace AutoBattle
                     this.currentBox.ocupied = false;
                     battlefield.grids[currentBox.Index] = currentBox;
                     Console.WriteLine($"Player {CharacterIndex} walked down\n");
-                    battlefield.drawBattlefield(5, 5);
-
+                    battlefield.DrawBattlefield();
                     return;
                 }
             }
         }
 
+        //method to get valid neighbourhood of character
+        private List<GridBox> GetNeighborhood(Grid battlefield)
+        {
+            List<GridBox> neighbors = new List<GridBox>();
+
+            int sizeInY = battlefield.yLength;
+
+            bool isOnLeftBorder = currentBox.Index % sizeInY == 0;
+            bool isOnRightBorder = currentBox.Index % sizeInY == sizeInY - 1;
+            bool isOnUpBorder = currentBox.Index < sizeInY;
+            bool isOnDownBorder = currentBox.Index >= battlefield.grids.Count - sizeInY;
+
+            //Adding 
+            // [ ] [X] [ ]
+            // [ ]  C  [ ]
+            // [ ] [ ] [ ]
+            if (!isOnUpBorder)
+            {
+               neighbors.Add(battlefield.grids.Find(x => x.Index == currentBox.Index - battlefield.xLenght));
+            }
+
+            //Adding 
+            // [ ] [ ] [ ]
+            // [ ]  C  [ ]
+            // [ ] [X] [ ]
+            if (!isOnDownBorder)
+            {
+                neighbors.Add(battlefield.grids.Find(x => x.Index == currentBox.Index + battlefield.xLenght));
+            }
+
+            //Adding 
+            // [ ] [ ] [ ]
+            // [X]  C  [ ]
+            // [ ] [ ] [ ]
+            if (!isOnLeftBorder)
+            {
+                neighbors.Add(battlefield.grids.Find(x => x.Index == currentBox.Index - 1));
+            }
+
+            //Adding 
+            // [ ] [ ] [ ]
+            // [ ]  C  [X]
+            // [ ] [ ] [ ]
+            if (!isOnRightBorder)
+            {
+                neighbors.Add(battlefield.grids.Find(x => x.Index == currentBox.Index + 1));
+            }
+
+            //Adding 
+            // [X] [ ] [ ]
+            // [ ]  C  [ ]
+            // [ ] [ ] [ ]
+            if (!isOnUpBorder && !isOnLeftBorder)
+            {
+                neighbors.Add(battlefield.grids.Find(x => x.Index == currentBox.Index - battlefield.xLenght - 1));
+            }
+
+            //Adding 
+            // [ ] [ ] [X]
+            // [ ]  C  [ ]
+            // [ ] [ ] [ ]
+            if (!isOnUpBorder && !isOnRightBorder)
+            {
+                neighbors.Add(battlefield.grids.Find(x => x.Index == currentBox.Index - battlefield.xLenght + 1));
+            }
+
+            //Adding 
+            // [ ] [ ] [ ]
+            // [ ]  C  [ ]
+            // [X] [ ] [ ]
+            if (!isOnDownBorder && !isOnLeftBorder)
+            {
+                neighbors.Add(battlefield.grids.Find(x => x.Index == currentBox.Index + battlefield.xLenght - 1));
+            }
+
+            //Adding 
+            // [ ] [ ] [ ]
+            // [ ]  C  [ ]
+            // [ ] [ ] [X]
+            if (!isOnDownBorder && !isOnRightBorder)
+            {
+                neighbors.Add(battlefield.grids.Find(x => x.Index == currentBox.Index + battlefield.xLenght + 1));
+            }
+
+            return neighbors;
+        }
+
         // Check in x and y directions if there is any character close enough to be a target.
         bool CheckCloseTargets(Grid battlefield)
         {
-            bool left = (battlefield.grids.Find(x => x.Index == currentBox.Index - 1).ocupied);
-            bool right = (battlefield.grids.Find(x => x.Index == currentBox.Index + 1).ocupied);
-            bool up = (battlefield.grids.Find(x => x.Index == currentBox.Index + battlefield.xLenght).ocupied);
-            bool down = (battlefield.grids.Find(x => x.Index == currentBox.Index - battlefield.xLenght).ocupied);
+            var neighbours = GetNeighborhood(battlefield);
 
-            if (left & right & up & down) 
+            foreach (var neighbour in neighbours)
             {
-                return true;
+                if (neighbour.ocupied)
+                {
+                    return true;
+                }
             }
-            return false; 
+
+            return false;
         }
 
         public void Attack (Character target)
