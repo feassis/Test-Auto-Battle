@@ -231,8 +231,10 @@ namespace AutoBattle
         public void Attack (Character target)
         {
             var rand = new Random();
-            target.TakeDamage(rand.Next(0, (int)BaseDamage));
-            Console.WriteLine($"Player {CharacterIndex} is attacking the player {Target.CharacterIndex} and did {BaseDamage} damage\n");
+
+            int randomDmg = rand.Next(0, (int)BaseDamage);
+            target.TakeDamage(randomDmg);
+            Console.WriteLine($"Player {CharacterIndex} is attacking the player {Target.CharacterIndex} and did {randomDmg} damage\n");
         }
     }
 }
