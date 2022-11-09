@@ -6,14 +6,6 @@ namespace AutoBattle
 {
     public class Types
     {
-        public struct CharacterClassSpecific
-        {
-            CharacterClass CharacterClass;
-            float hpModifier;
-            float ClassDamage;
-            CharacterSkills[] skills;
-        }
-
         public class GridBox
         {
             public int xIndex;
@@ -31,11 +23,11 @@ namespace AutoBattle
             }
         }
 
-        public struct CharacterSkills
+        public abstract class CharacterSkill
         {
-            string Name;
-            float damage;
-            float damageMultiplier;
+            public string SkillName;
+
+            public abstract void ExecuteSkill(Character self, Character target, Grid battlefield);
         }
 
         public enum CharacterClass : uint

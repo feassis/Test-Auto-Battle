@@ -6,7 +6,7 @@ using static AutoBattle.Types;
 
 namespace AutoBattle
 {
-    public class Character
+    public abstract class Character
     {
         public string Name { get; set; }
         public float Health;
@@ -15,6 +15,8 @@ namespace AutoBattle
         public GridBox CurrentBox;
         public int CharacterIndex;
         public CharacterClass CharacterClass;
+        
+        protected CharacterSkill Skill;
         
         public Character Target { get; set; }
 
@@ -53,6 +55,12 @@ namespace AutoBattle
 
         public void StartTurn(Grid battlefield)
         {
+            if (isDead)
+            {
+                return;
+            }
+
+            Skill.ExecuteSkill(this, Target, battlefield);
 
             if (CheckCloseTargets(battlefield)) 
             {
@@ -218,7 +226,7 @@ namespace AutoBattle
         }
 
         // Check in x and y directions if there is any character close enough to be a target.
-        bool CheckCloseTargets(Grid battlefield)
+        public bool CheckCloseTargets(Grid battlefield)
         {
             var neighbours = GetNeighborhood(battlefield);
 
@@ -243,6 +251,7 @@ namespace AutoBattle
             var rand = new Random();
 
             int randomDmg = rand.Next(0, (int)BaseDamage);
+            randomDmg = (int)Math.Round(randomDmg * DamageMultiplier);
             target.TakeDamage(randomDmg);
             Console.WriteLine($"Player {CharacterIndex} is attacking the player {Target.CharacterIndex} and did {randomDmg} damage\n");
         }
