@@ -1,5 +1,10 @@
 # Test-Auto-Battle
 
+## Step 5 - Changing Movement To Move To All 8 directions
+
+1- The first step of my implementation is to be able to get the neighbour closest to target. 
+To achieve this two methods were implemented: GetNeighbourClosetToTarget(Grid battlefield) and GetNeighbourDistance(Grid battlefield, GridBox positiontoBeEvaluated)
+
 ## Step 4 - Drawing Character On Grid
 
 1- making player and enemy alocation be independent
