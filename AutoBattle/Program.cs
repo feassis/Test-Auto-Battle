@@ -79,18 +79,9 @@ namespace AutoBattle
 
             }
 
-            void StartTurn(){
-
-                Console.Write(Environment.NewLine + Environment.NewLine);
-                Console.WriteLine("---------Game - State---------");
-                Console.WriteLine($"Player Name: {PlayerCharacter.Name}");
-                Console.WriteLine($"Player Index: {PlayerCharacter.CharacterIndex}");
-                Console.WriteLine($"Player HP: {PlayerCharacter.Health}");
-                Console.WriteLine($"Enemy Name: {EnemyCharacter.Name}");
-                Console.WriteLine($"Enemy Index: {EnemyCharacter.CharacterIndex}");
-                Console.WriteLine($"Enemy HP: {EnemyCharacter.Health}");
-                Console.WriteLine("------------------------------");
-                Console.Write(Environment.NewLine + Environment.NewLine);
+            void StartTurn()
+            {
+                DisplayGameState();
 
                 if (currentTurn == 0)
                 {
@@ -106,6 +97,8 @@ namespace AutoBattle
                 {
                     character.StartTurn(grid);
                 }
+
+                DisplayGameState();
 
                 currentTurn++;
                 HandleTurn();
@@ -195,6 +188,20 @@ namespace AutoBattle
             int GetRandomNumberPositionOnGrid()
             {
                 return GetRandomInt(0, grid.xLenght * grid.yLength);
+            }
+
+            void DisplayGameState()
+            {
+                Console.Write(Environment.NewLine + Environment.NewLine);
+                Console.WriteLine("---------Game - State---------");
+                Console.WriteLine($"Player Name: {PlayerCharacter.Name}");
+                Console.WriteLine($"Player Index: {PlayerCharacter.CharacterIndex}");
+                Console.WriteLine($"Player HP: {PlayerCharacter.Health}");
+                Console.WriteLine($"Enemy Name: {EnemyCharacter.Name}");
+                Console.WriteLine($"Enemy Index: {EnemyCharacter.CharacterIndex}");
+                Console.WriteLine($"Enemy HP: {EnemyCharacter.Health}");
+                Console.WriteLine("------------------------------");
+                Console.Write(Environment.NewLine + Environment.NewLine);
             }
         }
     }
