@@ -16,7 +16,9 @@ namespace AutoBattle
         public int CharacterIndex;
         public CharacterClass CharacterClass;
         
-        public Character Target { get; set; } 
+        public Character Target { get; set; }
+
+        private bool isDead;
         
         public Character(CharacterClass characterClass, int index, string name)
         {
@@ -40,6 +42,7 @@ namespace AutoBattle
 
         public void Die()
         {
+            isDead = true;
             Console.WriteLine($"Character {Name} has died");
         }
 
@@ -232,6 +235,11 @@ namespace AutoBattle
 
         public void Attack (Character target)
         {
+            if (isDead)
+            {
+                return;
+            }
+            
             var rand = new Random();
 
             int randomDmg = rand.Next(0, (int)BaseDamage);
