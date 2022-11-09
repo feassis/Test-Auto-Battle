@@ -18,12 +18,13 @@ namespace AutoBattle
         
         public Character Target { get; set; } 
         
-        public Character(CharacterClass characterClass, int index)
+        public Character(CharacterClass characterClass, int index, string name)
         {
             CharacterClass = characterClass;
             Health = 100;
             BaseDamage = 20;
             CharacterIndex = index;
+            Name = name;
         }
 
         public bool TakeDamage(float amount)
@@ -39,7 +40,7 @@ namespace AutoBattle
 
         public void Die()
         {
-            //TODO >> maybe kill him?
+            Console.WriteLine($"Character {Name} has died");
         }
 
         public void WalkTO(bool CanWalk)

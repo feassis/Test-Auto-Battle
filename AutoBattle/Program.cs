@@ -15,7 +15,7 @@ namespace AutoBattle
             GridBox PlayerCurrentLocation;
             GridBox EnemyCurrentLocation;
             Character PlayerCharacter = null;
-            Character EnemyCharacter = null;
+            Character EnemyCharacter;
             List<Character> AllPlayers = new List<Character>();
             int currentTurn = 0;
             int numberOfPossibleTiles = grid.grids.Count;
@@ -52,7 +52,7 @@ namespace AutoBattle
 
                 CharacterClass characterClass = (CharacterClass)classIndex;
                 Console.WriteLine($"Player Class Choice: {characterClass}");
-                PlayerCharacter = new Character(characterClass, 0);
+                PlayerCharacter = new Character(characterClass, 0, "Player");
 
                 return true;
             }
@@ -64,7 +64,7 @@ namespace AutoBattle
                 int randomInteger = rand.Next(1, 4);
                 CharacterClass enemyClass = (CharacterClass)randomInteger;
                 Console.WriteLine($"Enemy Class Choice: {enemyClass}");
-                EnemyCharacter = new Character(enemyClass, 1);
+                EnemyCharacter = new Character(enemyClass, 1, "AI");
             }
 
             void StartGame()
