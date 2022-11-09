@@ -28,7 +28,8 @@ namespace AutoBattle
 
         public bool TakeDamage(float amount)
         {
-            if((Health -= BaseDamage) <= 0)
+            Health = Math.Clamp(Health - amount, 0, int.MaxValue);
+            if(Health <= 0)
             {
                 Die();
                 return true;
