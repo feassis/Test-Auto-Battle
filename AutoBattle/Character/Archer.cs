@@ -10,7 +10,7 @@ namespace AutoBattle
             DamageMultiplier = 1.3f;
             Health -= 10;
 
-            Skill = new PoisonCoatedArrows();
+            skill = new PoisonCoatedArrows();
         }
     }
 }

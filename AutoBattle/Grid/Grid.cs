@@ -8,20 +8,20 @@ namespace AutoBattle
 {
     public class Grid
     {
-        public List<GridBox> grids = new List<GridBox>();
-        public int xLenght;
-        public int yLength;
+        public List<GridBox> Grids = new List<GridBox>();
+        public int XLenght;
+        public int YLength;
         public Grid(int Lines, int Columns)
         {
-            xLenght = Lines;
-            yLength = Columns;
+            XLenght = Lines;
+            YLength = Columns;
             Console.WriteLine("The battle field has been created\n");
             for (int i = 0; i < Lines; i++)
             {
                 for(int j = 0; j < Columns; j++)
                 {
                     GridBox newBox = new GridBox(j, i, false, (Columns * i + j));
-                    grids.Add(newBox);
+                    Grids.Add(newBox);
                     Console.Write($"{newBox.Index}\n");
                 }
             }
@@ -30,14 +30,13 @@ namespace AutoBattle
         // prints the matrix that indicates the tiles of the battlefield
         public void DrawBattlefield()
         {
-            for (int i = 0; i < xLenght; i++)
+            for (int i = 0; i < XLenght; i++)
             {
-                for (int j = 0; j < yLength; j++)
+                for (int j = 0; j < YLength; j++)
                 {
-                    GridBox currentgrid = grids[i * xLenght + j];
-                    if (currentgrid.ocupied)
+                    GridBox currentgrid = Grids[i * XLenght + j];
+                    if (currentgrid.Ocupied)
                     {
-                        //if()
                         Console.Write($"[{currentgrid.CharacterIndex}]\t");
                     }
                     else
@@ -45,8 +44,10 @@ namespace AutoBattle
                         Console.Write($"[ ]\t");
                     }
                 }
+
                 Console.Write(Environment.NewLine + Environment.NewLine);
             }
+
             Console.Write(Environment.NewLine + Environment.NewLine);
         }
 

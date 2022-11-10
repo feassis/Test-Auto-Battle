@@ -10,7 +10,7 @@ namespace AutoBattle
             DamageMultiplier = 1.1f;
             Health += 30;
 
-            Skill = new AuraOfHeroism();
+            skill = new AuraOfHeroism();
         }
     }
 }
