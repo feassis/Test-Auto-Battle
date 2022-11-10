@@ -4,6 +4,7 @@
 
 1- Code Style: adapting variable names to code style
 2- Short Tech description: Doc Adding short tech description
+3- Folder Organization: Organizing files on folders
 
 ## Step 7 - Adding Class Specific Features (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/7)
 
