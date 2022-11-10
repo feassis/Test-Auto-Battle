@@ -8,17 +8,17 @@ namespace AutoBattle
     {
         public class GridBox
         {
-            public int xIndex;
-            public int yIndex;
-            public bool ocupied;
+            public int XIndex;
+            public int YIndex;
+            public bool Ocupied;
             public int Index;
             public int CharacterIndex = -1;
 
             public GridBox(int x, int y, bool ocupied, int index)
             {
-                xIndex = x;
-                yIndex = y;
-                this.ocupied = ocupied;
+                XIndex = x;
+                YIndex = y;
+                Ocupied = ocupied;
                 Index = index;
             }
         }

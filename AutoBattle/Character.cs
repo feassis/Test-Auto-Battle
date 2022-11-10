@@ -16,7 +16,7 @@ namespace AutoBattle
         public int CharacterIndex;
         public CharacterClass CharacterClass;
         
-        protected CharacterSkill Skill;
+        protected CharacterSkill skill;
         
         public Character Target { get; set; }
 
@@ -48,11 +48,6 @@ namespace AutoBattle
             Console.WriteLine($"Character {Name} has died");
         }
 
-        public void WalkTO(bool CanWalk)
-        {
-
-        }
-
         public void StartTurn(Grid battlefield)
         {
             if (isDead)
@@ -60,7 +55,7 @@ namespace AutoBattle
                 return;
             }
 
-            Skill.ExecuteSkill(this, Target, battlefield);
+            skill.ExecuteSkill(this, Target, battlefield);
 
             if (CheckCloseTargets(battlefield)) 
             {
@@ -77,18 +72,18 @@ namespace AutoBattle
         {
             var goToPosition = GetNeighbourClosetToTarget(battlefield);
 
-            var gotTopositionPreviousOcupied = goToPosition.ocupied;
+            var gotTopositionPreviousOcupied = goToPosition.Ocupied;
             var gotTopositionPreviousCharacterIndex = goToPosition.CharacterIndex;
 
-            goToPosition.ocupied = CurrentBox.ocupied;
+            goToPosition.Ocupied = CurrentBox.Ocupied;
             goToPosition.CharacterIndex = CurrentBox.CharacterIndex;
 
-            CurrentBox.ocupied = gotTopositionPreviousOcupied;
+            CurrentBox.Ocupied = gotTopositionPreviousOcupied;
             CurrentBox.CharacterIndex = gotTopositionPreviousCharacterIndex;
 
             CurrentBox = goToPosition;
 
-            Console.WriteLine($"Player {CharacterIndex} walked to l: {CurrentBox.Index / battlefield.yLength} c: {CurrentBox.Index % battlefield.yLength}\n");
+            Console.WriteLine($"Player {CharacterIndex} walked to l: {CurrentBox.Index / battlefield.YLength} c: {CurrentBox.Index % battlefield.YLength}\n");
             battlefield.DrawBattlefield();
         }
 
@@ -112,11 +107,11 @@ namespace AutoBattle
         //this method get the distance of a position to the character's target
         private NeighbourDistance GetNeighbourDistance(Grid battlefield, GridBox positiontoBeEvaluated)
         {
-            int targetLinePosition = Target.CurrentBox.Index / battlefield.yLength;
-            int targetColPosition = Target.CurrentBox.Index % battlefield.yLength;
+            int targetLinePosition = Target.CurrentBox.Index / battlefield.YLength;
+            int targetColPosition = Target.CurrentBox.Index % battlefield.YLength;
 
-            int evaluatedLinePosition = positiontoBeEvaluated.Index / battlefield.yLength;
-            int evaluatedColPosition = positiontoBeEvaluated.Index % battlefield.yLength;
+            int evaluatedLinePosition = positiontoBeEvaluated.Index / battlefield.YLength;
+            int evaluatedColPosition = positiontoBeEvaluated.Index % battlefield.YLength;
 
             int absDistanceOnLine = Math.Abs(targetLinePosition - evaluatedLinePosition);
             int absDistanceOnCol = Math.Abs(targetColPosition - evaluatedColPosition);
@@ -143,12 +138,12 @@ namespace AutoBattle
         {
             List<GridBox> neighbors = new List<GridBox>();
 
-            int sizeInY = battlefield.yLength;
+            int sizeInY = battlefield.YLength;
 
             bool isOnLeftBorder = CurrentBox.Index % sizeInY == 0;
             bool isOnRightBorder = CurrentBox.Index % sizeInY == sizeInY - 1;
             bool isOnUpBorder = CurrentBox.Index < sizeInY;
-            bool isOnDownBorder = CurrentBox.Index >= battlefield.grids.Count - sizeInY;
+            bool isOnDownBorder = CurrentBox.Index >= battlefield.Grids.Count - sizeInY;
 
             //Adding 
             // [ ] [X] [ ]
@@ -156,7 +151,7 @@ namespace AutoBattle
             // [ ] [ ] [ ]
             if (!isOnUpBorder)
             {
-               neighbors.Add(battlefield.grids.Find(x => x.Index == CurrentBox.Index - battlefield.xLenght));
+               neighbors.Add(battlefield.Grids.Find(x => x.Index == CurrentBox.Index - battlefield.XLenght));
             }
 
             //Adding 
@@ -165,7 +160,7 @@ namespace AutoBattle
             // [ ] [X] [ ]
             if (!isOnDownBorder)
             {
-                neighbors.Add(battlefield.grids.Find(x => x.Index == CurrentBox.Index + battlefield.xLenght));
+                neighbors.Add(battlefield.Grids.Find(x => x.Index == CurrentBox.Index + battlefield.XLenght));
             }
 
             //Adding 
@@ -174,7 +169,7 @@ namespace AutoBattle
             // [ ] [ ] [ ]
             if (!isOnLeftBorder)
             {
-                neighbors.Add(battlefield.grids.Find(x => x.Index == CurrentBox.Index - 1));
+                neighbors.Add(battlefield.Grids.Find(x => x.Index == CurrentBox.Index - 1));
             }
 
             //Adding 
@@ -183,7 +178,7 @@ namespace AutoBattle
             // [ ] [ ] [ ]
             if (!isOnRightBorder)
             {
-                neighbors.Add(battlefield.grids.Find(x => x.Index == CurrentBox.Index + 1));
+                neighbors.Add(battlefield.Grids.Find(x => x.Index == CurrentBox.Index + 1));
             }
 
             //Adding 
@@ -192,7 +187,7 @@ namespace AutoBattle
             // [ ] [ ] [ ]
             if (!isOnUpBorder && !isOnLeftBorder)
             {
-                neighbors.Add(battlefield.grids.Find(x => x.Index == CurrentBox.Index - battlefield.xLenght - 1));
+                neighbors.Add(battlefield.Grids.Find(x => x.Index == CurrentBox.Index - battlefield.XLenght - 1));
             }
 
             //Adding 
@@ -201,7 +196,7 @@ namespace AutoBattle
             // [ ] [ ] [ ]
             if (!isOnUpBorder && !isOnRightBorder)
             {
-                neighbors.Add(battlefield.grids.Find(x => x.Index == CurrentBox.Index - battlefield.xLenght + 1));
+                neighbors.Add(battlefield.Grids.Find(x => x.Index == CurrentBox.Index - battlefield.XLenght + 1));
             }
 
             //Adding 
@@ -210,7 +205,7 @@ namespace AutoBattle
             // [X] [ ] [ ]
             if (!isOnDownBorder && !isOnLeftBorder)
             {
-                neighbors.Add(battlefield.grids.Find(x => x.Index == CurrentBox.Index + battlefield.xLenght - 1));
+                neighbors.Add(battlefield.Grids.Find(x => x.Index == CurrentBox.Index + battlefield.XLenght - 1));
             }
 
             //Adding 
@@ -219,7 +214,7 @@ namespace AutoBattle
             // [ ] [ ] [X]
             if (!isOnDownBorder && !isOnRightBorder)
             {
-                neighbors.Add(battlefield.grids.Find(x => x.Index == CurrentBox.Index + battlefield.xLenght + 1));
+                neighbors.Add(battlefield.Grids.Find(x => x.Index == CurrentBox.Index + battlefield.XLenght + 1));
             }
 
             return neighbors;
@@ -232,7 +227,7 @@ namespace AutoBattle
 
             foreach (var neighbour in neighbours)
             {
-                if (neighbour.ocupied)
+                if (neighbour.Ocupied)
                 {
                     return true;
                 }
