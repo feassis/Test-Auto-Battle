@@ -1,6 +1,6 @@
 # Test-Auto-Battle
 
-## Step 8 - Reviewing Project (PR Link: )
+## Step 8 - Reviewing Project (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/8)
 
 1- Code Style: adapting variable names to code style
 2- Short Tech description: Doc Adding short tech description
