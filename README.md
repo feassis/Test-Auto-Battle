@@ -5,13 +5,15 @@
 1- Code Style: adapting variable names to code style
 2- Short Tech description: Doc Adding short tech description
 3- Folder Organization: Organizing files on folders
+4- explaning architecture choice on character skill
 
 ## Step 7 - Adding Class Specific Features (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/7)
 
 1- Feat - refactoring Character.cs - making Character class abstract and implementing a class for each Character Class
 2- Feat - refactoring attack method -adding damage multiplier to damage flow
 3- Feat - implementing character skill -creating character skills, assing for each class and calling at start of character turn. I created a abstract class called character skill that has a virtual method to execute skill. With this each of its chieldren can implement 
-whatever is needed
+whatever is needed.
+Observation: I've chosen to use behaviour architecture to character skill system, the idea behind this is to be able to easily re use code which is excellent to create new content and give a game designer power to do so.
 
 ## Step 6 - Refactoring Combat Flow (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/6)
 
@@ -56,10 +58,12 @@ To fix this I am moving this value alocations to Character constructor, since th
 
 Warnings:
 
-1- Fix - change variable placement: CharacterClass playerCharacterClass at Program.cs, is never used, and the reason for that is that it is useless, since this info is should be part of variable Character PlayerCharacter, 
-because class should be under Character class domaim.
-2- Fix - Using GetRandomInt - GetRandomInt was not being used - since the enemy and player "random" initial position was not random I've just changed to be random by creating a auxiliary method to return a valid random number
-3- Fix - Variable definition hiding class variable - Fixing Player Current Location was never used. At AlocatePlayerCharacter() a new variable was being created with the same name and type making it alocate player to a local variable position. 
+1- Fix - change variable placement: CharacterClass playerCharacterClass at Program.cs, is never used, and the reason for that is that it is useless, 
+since this info is should be part of variable Character PlayerCharacter, because class should be under Character class domaim.
+2- Fix - Using GetRandomInt - GetRandomInt was not being used - since the enemy and player "random" initial position was not random.
+I've just changed to be random by creating a auxiliary method to return a valid random number
+3- Fix - Variable definition hiding class variable - Fixing Player Current Location was never used. 
+At AlocatePlayerCharacter() a new variable was being created with the same name and type making it alocate player to a local variable position. 
 4- Fix - change placement of return statement- Return statement was at wrong postion at Character.cs.StartTurn(), chaged its position to after battleField is draw
 
 ## Step 1 - Removing Compilation Errors From Standard Project (PR Link: https://github.com/feassis/Test-Auto-Battle/pull/1)
@@ -67,16 +71,3 @@ because class should be under Character class domaim.
 Erros:
 
 1- Fix - change placement of adition to list- At Grid.cs -> grids.Add(newBox) was being called at a point where it was not defined, the solution was to move it to the second for, after newBox initialization
-
-
-To Dos: 
-
-// Explaing Character Skill Archtecture - show all feats as a exemple of how good is this archtecture
-
-// try to improve readability of each point
-
-// Explain clean code
-
-// folder organization
-
-// doc problem of previous movement
